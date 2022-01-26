@@ -1,0 +1,23 @@
+[@Resources\Vars.inc]
+IconName=TuneFluent
+W=450
+Font=Segoe UI
+Stroke=0
+CircSize=8
+R=0
+ScreenPadding=0
+Animated=1
+EaseType=OutSine
+AniDir=Bottom
+AniSteps=10
+Blur=Acrylic
+BlurCorner=None
+Accent=212,212,212
+Alpha=150
+Color=247,247,247
+Border=94,94,94
+FontColor=23,23,23
+DarkColor=82,82,82
+BoxBorder=92,92,92
+BoxColor=36,36,36
+BackgroundMod=0
