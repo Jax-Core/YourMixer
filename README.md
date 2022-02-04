@@ -11,7 +11,7 @@
   <p align="center">
     A custom volume mixer to replace the default one.
     <br />
-    <a href=""><strong>More Info »</strong></a>
+    <a href="https://www.deviantart.com/jaxoriginals/art/905969076"><strong>More Info »</strong></a>
     <br />
     <br />
     <a href="https://discord.gg/JmgehPSDD6">Report Bugs & Request Features </a>
@@ -40,14 +40,13 @@
       </ul>
     </li>
     <li> <a href="#help">Help</a></li>
-
   </ol>
 </details>
 
 
 ## About
 
-![YourMixer](banner)
+![YourMixer](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/97bfd084-7ef0-496f-a835-3c41f482d38c/deze27o-5869425f-75ad-4fe2-9a25-9bc91d99d724.png/v1/fill/w_1095,h_730,q_70,strp/yourmixer___osd_appvolume_mixer_by_jaxoriginals_deze27o-pre.jpg)
 
 **YourMixer** is a Rainmeter skin that replaces the standard Windows Volume Mixer with a fully customizable volume controller. **YourMixer** includes 7 different color schemes as well as a multitude customization options for you to tweak and customize to your liking.
 
