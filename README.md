@@ -27,9 +27,6 @@
       <a href="#about">About</a>
     </li>
     <li>
-      <a href="#Features">Features</a>
-    </li>
-    <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
@@ -52,13 +49,9 @@
 
 ![YourMixer](banner)
 
-YourMixer is a Rainmeter skin that replaces the standard Windows Volume Mixer with a fully customizable volume mixer. YourMixer includes 7 different color schemes as well as a multitude customization options for you to tweak and customize to your liking.
+YourMixer is a Rainmeter skin that replaces the standard Windows Volume Mixer with a fully customizable volume controller. YourMixer includes 7 different color schemes as well as a multitude customization options for you to tweak and customize to your liking.
 
-<p align="right">
-    <b><a href="#top">↥ back to top</a></b>
-</p>
-
-## Features
+### Features
 
 * 7 Appearance Presets and 9 Alignment Options
 * Apps Volume Control
