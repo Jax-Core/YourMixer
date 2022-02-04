@@ -42,13 +42,19 @@ LeftMouseUpAction=
 ; ---------------------------------------------------------------------------- ;
 
 
-[Dark]
+; [Dark]
+; Meter=Image
+; X=r
+; Y=(30*[Set.S])R
+; MeterStyle=Select:S
+
+[Blur]
 Meter=Image
 X=r
 Y=(30*[Set.S])R
 MeterStyle=Select:S
 
-[Blur]
+[Full]
 Meter=Image
 MeterStyle=Select:S
 

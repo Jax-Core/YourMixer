@@ -116,7 +116,7 @@ function generateMixer()
     local pageW = SKIN:GetW()
 
     local rows = SKIN:GetMeasure('AppVolumeParent'):GetValue()
-    local pageH = clamp(((60+40*rows+20) * scale),SKIN:GetVariable('MinH'),SKIN:GetVariable('SCREENAREAHEIGHT'))
+    local pageH = clamp(((60+40*(rows+1)+20) * scale),SKIN:GetVariable('MinH'),SKIN:GetVariable('SCREENAREAHEIGHT'))
     local File = io.open(SKIN:GetVariable('ROOTCONFIGPATH')..'Main\\Accessories\\Page\\Variants\\VolumeMixerCache.inc','w')
     for i = 1, rows do
         File:write(
@@ -171,15 +171,19 @@ function dragMultiSlider(posX)
     local globalW = SKIN:GetVariable('W')
     local scale = SKIN:GetVariable('scale')
     local SliderX = SKIN:GetMeter(index):GetX()
-    local SliderW = globalW - (150+22+75) * scale
+    local SliderW = globalW - (180+22+75) * scale
     local rawPer = ((posX-SliderX)*100/(((SliderX)+SliderW)-(SliderX)))
     local resultantPer = round(clamp(rawPer, 0, 100), 0)
     SKIN:Bang('[!SetOption AppVolPer'..index..' Formula '..resultantPer..'][!CommandMeasure AppVol'..index..' "SetVolume '..resultantPer..'"][!UpdateMeter *][!UpdateMeasureGroup UpdateWhenChange][!Redraw]')
 end
 
 function termMultiSlider()
+    local function clamp(num, lower, upper)
+        assert(num and lower and upper, 'error: Clamp(num, lower, upper)')
+        return math.max(lower, math.min(upper, num))
+    end
     local index = globalMixerVolumeIndex
-    SKIN:Bang('[!SetOption AppVolPer'..index..' Formula "Round(AppVol'..index..' * 100)"][!CommandMeasure MeasureMouse "Stop"][!UpdateMeter *][!UpdateMeasureGroup UpdateWhenChange][!Redraw]')
+    SKIN:Bang('[!SetOption AppVolPer'..index..' Formula "Round(AppVol'..index..' * '..clamp(100*index,1,100)..')"][!CommandMeasure MeasureMouse "Stop"][!UpdateMeter *][!UpdateMeasureGroup UpdateWhenChange][!Redraw]')
 end
 -- -------------------------------------------------------------------------- --
 --                                    Util                                    --

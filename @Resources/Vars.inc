@@ -1,25 +1,25 @@
 [Variables]
-IconName=Tune
+IconName=TuneFluent
 ;Default = Tune
 StartText=Volume Mixer
 ;Default = Volume Mixer
 
-W=500
+W=450
 MinH=0
 ;Default = 0
 
-Font=Poppins
+Font=Segoe UI
 Scale=1
 ;User
 Stroke=0
-CircSize=6
-;Default = 6
-R=15
+R=0
 ;Default = 15
+SliderStyle=Fluent
+;Default = Round
 
 Position=BR
 ;User
-ScreenPadding=20
+ScreenPadding=0
 ;Default = 20
 AnimationDisplacement=30
 ;Default = 30
@@ -29,21 +29,21 @@ EaseType=OutSine
 AniDir=Bottom
 AniSteps=10
 
-Blur=None
+Blur=Acrylic
 ;Default = None
 BlurCorner=None
 ;Default = None
 
-Accent=242, 52, 0
-Alpha=255
-Color=12,12,12
-Border=28,28,28
-FontColor=242,240,255
-DarkColor=120,120,120
-BoxBorder=35,35,35
-BoxColor=35,35,35
+Accent=35,159,255
+Alpha=150
+Color=36,36,36
+Border=54,54,54
+FontColor=255,255,255
+DarkColor=190,190,190
+BoxBorder=80,80,80
+BoxColor=60,60,60
 
-BackgroundMod=1
+BackgroundMod=0
 
 ;;╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ;;║ METERSTYLES                                                                                          ║

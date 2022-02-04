@@ -24,13 +24,13 @@ MeterStyle=Set.Div:S
 Meter=String
 Text=Minimum module height
 MeterStyle=Set.String:S | Set.OptionName:S
-[Set.Div:123s]
-Meter=Shape
-MeterStyle=Set.Div:S
-[Option04]
-Meter=String
-Text=Drag circle size
-MeterStyle=Set.String:S | Set.OptionName:S
+; [Set.Div:123s]
+; Meter=Shape
+; MeterStyle=Set.Div:S
+; [Option04]
+; Meter=String
+; Text=Drag circle size
+; MeterStyle=Set.String:S | Set.OptionName:S
 
 [Selection]
 Meter=String
@@ -175,16 +175,6 @@ Y=([Option03:Y]-#Set.P#+(-30/2+8)*[Set.S])
 [Value03]
 Meter=String
 Text=#MinH#
-MeterStyle=Set.String:S | Set.Value:S
-
-[CircSize]
-Meter=Shape
-MeterStyle=Set.TextBox:S
-Type=Num
-Y=([Option04:Y]-#Set.P#+(-30/2+8)*[Set.S])
-[Value04]
-Meter=String
-Text=#CircSize#
 MeterStyle=Set.String:S | Set.Value:S
 
 [Font]

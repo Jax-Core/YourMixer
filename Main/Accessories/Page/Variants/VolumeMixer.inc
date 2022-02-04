@@ -29,25 +29,23 @@ DynamicVariables=1
 
 [ShapeStyle]
 Y=r
-X=(150*#scale#)
-Shape=Line 0,0,(#W#-(150+22+75)*#scale#),0 | StrokeWidth 2 | Fill Color 0,0,0,1 | StrokeStartCap Round | StrokeEndCap Round | Stroke Color #BoxColor#
-Shape2=Line 0,0,(#W#-(150+22+75)*#scale#),0 | StrokeWidth 4 | Fill Color 0,0,0,1 | StrokeStartCap Round | StrokeEndCap Round | Stroke Color #Accent# | Scale ([AppVolPer#CURRENTSECTION#:]/100 > 0 ? [AppVolPer#CURRENTSECTION#:]/100 : 0), 1, 0, 0
-Shape3=Line 0,0,(#W#-(150+22+75)*#scale#),0 | StrokeWidth 10 | Fill Color 0,0,0,1 | Stroke Color 0,0,0,1
-Shape4=Ellipse ((#W#-(150+22+75)*#scale#)*[AppVolPer#CURRENTSECTION#:]/100),0,(#CircSize#*#scale#),(#CircSize#*#scale#) | StrokeWidth 0 | Fill Color #Accent#
+X=(180*#scale#)
 DynamicVariables=1
 LeftMouseDownAction=[!CommandMEasure Func "initMultiSlider('#CURRENTSECTION#')"]
+[ShapeStyleInclude]
+@includeSliderStyle=SliderStyle\#SliderStyle#.inc
 
 
 [TextStyle]
 X=(22*#scale#)
 Y=(40*#scale#)r
-W=((150-22)*#scale#)
+W=((180-44)*#scale#)
 MeasureName=App#CURRENTSECTION#
 StringAlign=LeftCenter
 Clipstring=1
-FontColor=#FontColor#,([App#CURRENTSECTION#:] = -1 ? 150 : 255)
-LeftMouseDownAction=[!CommandMeasure App#CURRENTSECTION# "ToggleMute"][!UpdateMeasureGroup UpdateWhenChange][!UpdateMeter *][!Redraw]]
-
+FontColor=#FontColor#,([App#CURRENTSECTION#:] = -1 ? 180 : 255)
+LeftMouseDownAction=[!CommandMeasure App#CURRENTSECTION# "ToggleMute"][!UpdateMeasureGroup UpdateWhenChange][!UpdateMeter *][!Redraw]
+StringCase=Proper
 DynamicVariables=1
 
 [VolStyle]
@@ -60,6 +58,27 @@ DynamicVariables=1
 Clipstring=1
 
 
+
+[AppVol0]
+Measure=Plugin
+Plugin=Win7AudioPlugin
+DynamicVariables=1
+UpdateDivider=1
+Group=UpdateWhenChange
+[AppVolPer0]
+Measure=Calc
+Formula=Round(AppVol0)
+Group=UpdateWhenChange
+IfCondition=AppVolPer0 < 20
+IfTrueAction=[!SetOption VolumeIcon Text "[\xe04f]"]
+IfCondition2=(AppVolPer0 >= 20) && (AppVolPer0 < 50)
+IfTrueAction2=[!SetOption VolumeIcon Text "[\xe04e]"]
+IfCondition3=(AppVolPer0 >= 50) && (AppVolPer0 < 90)
+IfTrueAction3=[!SetOption VolumeIcon Text "[\xe04d]"]
+IfCondition4=(AppVolPer0 >= 90)
+IfTrueAction4=[!SetOption VolumeIcon Text "[\xe050]"]
+Substitute="-100":"Muted"
+
 ; ---------------------------------------------------------------------------- ;
 ;                                    Content                                   ;
 ; ---------------------------------------------------------------------------- ;
@@ -68,7 +87,31 @@ ImageName=#@#Images\Orbs\#IconName#.png
 [Start]
 Text=#StartText#
 
-[Vol1]
-Y=(40*#scale#)R
+[VolumeIcon]
+Meter=String
+MeterStyle=RegularText
+X=(22*#scale#)
+Y=(38*#scale#)R
+FontFace=Material Icons Round
+StringAlign=LeftCenter
+FontSize=(16*#scale#)
+DynamicVariables=1
+Greyscale=1
+ImageTint=#FontColor#
+LeftMouseDownAction=[!CommandMeasure AppVol0 "ToggleMute"][!UpdateMeasureGroup UpdateWhenChange][!UpdateMeter *][!Redraw]
+[Vol0]
+Meter=String
+X=(10*#Scale#)R
+Y=(-2*#scale#)r
+W=((180-16-44-10)*#scale#)
+LeftMouseDownAction=[!CommandMeasure "AppVol0" "TogglePrevious"][!UpdateMeasureGroup UpdateWhenChange][!UpdateMeter *][!Redraw]
+RightMouseUpAction=[!CommandMeasure "AppVol0" "ToggleNext"][!UpdateMeasureGroup UpdateWhenChange][!UpdateMeter *][!Redraw]
+MeterStyle=RegularText | TextStyle
+[0]
+Meter=Shape
+MeterStyle=ShapeStyle
+[VolPer0]
+Meter=String
+MeterStyle=RegularText | VolStyle
 
 @includeGenerated=#ROOTCONFIGPATH#Main\Accessories\Page\Variants\VolumeMixerCache.inc
