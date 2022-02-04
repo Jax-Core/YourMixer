@@ -49,7 +49,7 @@
 
 ![YourMixer](banner)
 
-YourMixer is a Rainmeter skin that replaces the standard Windows Volume Mixer with a fully customizable volume controller. YourMixer includes 7 different color schemes as well as a multitude customization options for you to tweak and customize to your liking.
+**YourMixer** is a Rainmeter skin that replaces the standard Windows Volume Mixer with a fully customizable volume controller. **YourMixer** includes 7 different color schemes as well as a multitude customization options for you to tweak and customize to your liking.
 
 ### Features
 
@@ -70,9 +70,9 @@ YourMixer is a Rainmeter skin that replaces the standard Windows Volume Mixer wi
 
 ### Installation
 
-Assuming you successfully downloaded and installed Rainmeter as well as JaxCore, you can now proceed to install YourMixer by following the steps below.
+Assuming you successfully downloaded and installed Rainmeter as well as JaxCore, you can now proceed to install **YourMixer** by following the steps below.
 
-1. Download and run the `.rmskin` file for **YourMixer** from the official [JaxCore site](https://jax-core.github.io/) to install **YourMixer**.
+1. Download and run the `.rmskin` file for **YourMixer** from the official [JaxCore site](https://jax-core.github.io/).
 2. Leave the installation settings at their defaults and click Install.
 3. When the installation is finished, a startup pop-up should appear. Follow through the pop-up to finish installing **YourMixer**.
 
@@ -82,7 +82,7 @@ Assuming you successfully downloaded and installed Rainmeter as well as JaxCore,
 
 #### Choosing Color Schemes:
 
-Follow the steps outlined below to setup custom color presets:
+Follow the steps outlined below to choose a custom color preset:
 
 1. Open Core and head over to the **Modules** section.
 2. Select **YourMixer** from the list and proceed to the **Color Scheme** tab and choose a preset that you like.
@@ -92,7 +92,7 @@ Follow the steps outlined below to setup custom color presets:
 
 #### Choosing Activation Alignment:
 
-Follow the steps outlined below to edit how YourMixer appears on your screen:
+Follow the steps outlined below to edit how **YourMixer** appears on your screen:
 
 1. Open Core and head over to the **Modules** section.
 2. Select **YourMixer** from the list and proceed to the **Position** tab.
