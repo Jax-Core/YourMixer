@@ -60,8 +60,8 @@ YourMixer is a Rainmeter skin that replaces the standard Windows Volume Mixer wi
 
 ## Features
 
-* 7 Appearance Presets
-* 9 Alignment Options
+* 7 Appearance Presets and 9 Alignment Options
+* Apps Volume Control
 * Background Blur and many more...
 
 <p align="right">
