@@ -3,15 +3,15 @@
 [AppVolper0]
 Measure=Plugin
 Plugin=Win7AudioPlugin
-IfCondition=AppVolper0 <= 0
+IfCondition=AppVolper0 < 0
 iftrueaction=[!SetOption MeasureTray IconName "#@#Icons\Volume0#IconTheme#.ico"][!UpdateMeasure MeasureTray]
-IfCondition2=(AppVolPer0 > 0) && (AppVolPer0 < 20)
+IfCondition2=(AppVolPer0 = 0)
 IfTrueAction2=[!SetOption MeasureTray IconName "#@#Icons\Volume1#IconTheme#.ico"][!UpdateMeasure MeasureTray]
-IfCondition3=(AppVolPer0 >= 20) && (AppVolPer0 < 50)
+IfCondition3=(AppVolPer0 > 0) && (AppVolPer0 < 30)
 IfTrueAction3=[!SetOption MeasureTray IconName "#@#Icons\Volume2#IconTheme#.ico"][!UpdateMeasure MeasureTray]
-IfCondition4=(AppVolPer0 >= 50) && (AppVolPer0 < 90)
+IfCondition4=(AppVolPer0 >= 30) && (AppVolPer0 < 70)
 IfTrueAction4=[!SetOption MeasureTray IconName "#@#Icons\Volume3#IconTheme#.ico"][!UpdateMeasure MeasureTray]
-IfCondition5=(AppVolPer0 >= 90)
+IfCondition5=(AppVolPer0 >= 70)
 IfTrueAction5=[!SetOption MeasureTray IconName "#@#Icons\Volume4#IconTheme#.ico"][!UpdateMeasure MeasureTray]
 DynamicVariables=1
 UpdateDivider=1
