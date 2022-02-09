@@ -1,4 +1,5 @@
 function generateMixer {
+
     $saveLocation = "$($RmAPI.VariableStr('ROOTCONFIGPATH'))Main\Accessories\Page\Main.ini"
     $scale = $RmAPI.VariableStr('scale')
     $pageW = $RmAPI.VariableStr('W')
@@ -77,9 +78,6 @@ MeterStyle=RegularText | VolStyle
 
         } 
     } else {
-        $RmAPI.Log($AppArray)
-        # $RmAPI.Log($rows)
-        # $RmAPI.Log($AppHash['Discord'].Count)
         for (($i = 1); ($i -le $rows) ; $i++) {
             if ($i -notin $SkipIndex) {
                 $fileContent += @"
@@ -101,13 +99,23 @@ Substitute="-100":"Muted"
 Meter=Image
 MeterStyle=ImageStyle | ImageStyle:#FetchIcons#
 
-[Vol$i]
-Meter=String
-MeterStyle=RegularText | TextStyle | TextStyle:#FetchIcons#
-
 "@
                 if ($AppHash[$AppArray[$i-1]].Count -gt 1) {
                     $occuranceArray = (0..($AppArray.Count-1)) | where {$AppArray[$_] -eq "$($AppArray[$i-1])"}
+
+                    $bang = ""
+                    for ($j = 0; $j -lt $occuranceArray.Count; $j++) {
+                        $bang += "[!CommandMeasure AppVol$($occuranceArray[$j] + 1) `"ToggleMute`"]"
+                        }
+
+                    $fileContent += @"
+
+[Vol$i]
+Meter=String
+MeterStyle=RegularText | TextStyle | TextStyle:#FetchIcons#
+LeftMouseDownAction=$bang[!UpdateMeasureGroup UpdateWhenChange][!UpdateMeter *][!Redraw]
+
+"@
                     for ($j = 0; $j -lt $occuranceArray.Count; $j++) {
                         $fileContent += @"
 
@@ -118,8 +126,13 @@ MeterStyle=ShapeStyle | ShapeStyle:$($AppHash[$AppArray[$i-1]].Count)
 
 "@
                     }
+
                 } else {
                     $fileContent += @"
+
+[Vol$i]
+Meter=String
+MeterStyle=RegularText | TextStyle | TextStyle:#FetchIcons#
                 
 [$i]
 Meter=Shape
