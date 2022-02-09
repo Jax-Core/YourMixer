@@ -1,4 +1,5 @@
 [Variables]
+@include18Custom=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
 [Header01]
 Meter=String
 Text=Dimensions
@@ -91,11 +92,11 @@ Text=Start text
 MeterStyle=Set.String:S | Set.OptionName:S
 [Header14]
 Meter=String
-Text=Fill and coloring
+Text=Background modification
 MeterStyle=Set.String:S | Set.OptionCat:S
 [Option15]
 Meter=String
-Text=Blur type
+Text=Modify launched background
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider16]
@@ -103,39 +104,24 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option16]
 Meter=String
-Text=Blur rounding size
-
+Text=Background blur
+FontColor=#Set.Text_Color#,(#BackgroundMod# = 1 ? 255 : 150)
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider17]
 Meter=Shape
 MeterStyle=Set.Div:S
 [Option17]
 Meter=String
-Text=Panel opacity
-
-MeterStyle=Set.String:S | Set.OptionName:S
-[Divider18]
-Meter=Shape
-MeterStyle=Set.Div:S
-[Option18]
-Meter=String
-Text=Accent color
-
-MeterStyle=Set.String:S | Set.OptionName:S
-[Divider19]
-Meter=Shape
-MeterStyle=Set.Div:S
-[Option19]
-Meter=String
 Text=Background color
-
+FontColor=#Set.Text_Color#,(#BackgroundMod# = 1 ? 255 : 150)
 MeterStyle=Set.String:S | Set.OptionName:S
-[Divider20]
-Meter=Shape
-MeterStyle=Set.Div:S
+[Header19]
+Meter=String
+Text=Fill and coloring
+MeterStyle=Set.String:S | Set.OptionCat:S
 [Option20]
 Meter=String
-Text=Divider color
+Text=Blur type
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider21]
@@ -143,7 +129,7 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option21]
 Meter=String
-Text=Font color
+Text=Blur rounding size
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider22]
@@ -151,7 +137,7 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option22]
 Meter=String
-Text=Dark color
+Text=Panel opacity
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider23]
@@ -159,13 +145,45 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option23]
 Meter=String
-Text=Box border color
+Text=Accent color
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider24]
 Meter=Shape
 MeterStyle=Set.Div:S
 [Option24]
+Meter=String
+Text=Divider color
+
+MeterStyle=Set.String:S | Set.OptionName:S
+[Divider25]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option25]
+Meter=String
+Text=Font color
+
+MeterStyle=Set.String:S | Set.OptionName:S
+[Divider26]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option26]
+Meter=String
+Text=Dark color
+
+MeterStyle=Set.String:S | Set.OptionName:S
+[Divider27]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option27]
+Meter=String
+Text=Box border color
+
+MeterStyle=Set.String:S | Set.OptionName:S
+[Divider28]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option28]
 Meter=String
 Text=Box color
 
@@ -300,6 +318,52 @@ Meter=String
 Text=#StartText#
 
 MeterStyle=Set.String:S | Set.Value:S
+[BackgroundMod]
+Meter=Shape
+MeterStyle=Set.Bool:S
+
+
+Y=([Option15:Y]-#Set.P#+(-20/2+8)*[Set.S])
+[Blur:]
+Meter=Shape
+0Act=[!WriteKeyValue Variables Blur "None" "#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc"]
+1Act=[!WriteKeyValue Variables Blur "Acrylic" "#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc"]
+2Act=[!WriteKeyValue Variables Blur "Blur" "#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc"]
+MeterStyle=Set.Pick3:S
+Shape2=Rectangle (100*[Set.S]*([&Func:returnBool('Blur', 'Acrylic')]+[&Func:returnBool('Blur', 'Blur')]*2)),0,(300/3*[Set.S]),(30*[Set.S]),(7*[Set.S]) | Fill Color #Set.Text_Color# | StrokeWidth 0
+Y=([Option16:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Hidden=(1-#BackgroundMod#)
+[Blur:0]
+Meter=String
+Text=None
+FontColor=[&Func:returnBool('Blur', 'None', '#Set.Pri_color#', '#Set.Text_Color#')]
+MeterStyle=Set.String:S | Set.PickOption3_0:S
+Hidden=(1-#BackgroundMod#)
+[Blur:1]
+Meter=String
+Text=Acrylic
+FontColor=[&Func:returnBool('Blur', 'Acrylic', '#Set.Pri_color#', '#Set.Text_Color#')]
+MeterStyle=Set.String:S | Set.PickOption3_1:S
+Hidden=(1-#BackgroundMod#)
+[Blur:2]
+Meter=String
+Text=Blur
+FontColor=[&Func:returnBool('Blur', 'Blur', '#Set.Pri_color#', '#Set.Text_Color#')]
+MeterStyle=Set.String:S | Set.PickOption3_2:S
+Hidden=Hidden=(1-#BackgroundMod#)
+
+[Color]
+Meter=Shape
+MeterStyle=Set.ColorPacity:S
+LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#Color" "FileName=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
+Y=([Option17:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Type=Num|1|255
+Hidden=(1-#BackgroundMod#)
+[Value17]
+Meter=String
+Text=#ColorOpacity#
+MeterStyle=Set.String:S | Set.Pacity:S
+Hidden=(1-#BackgroundMod#)
 [Blur:]
 Meter=Shape
 0Act=[!WriteKeyValue Variables Blur "None" "#Sec.SaveLocation#"]
@@ -307,7 +371,7 @@ Meter=Shape
 2Act=[!WriteKeyValue Variables Blur "Blur" "#Sec.SaveLocation#"]
 MeterStyle=Set.Pick3:S
 Shape2=Rectangle (100*[Set.S]*([&Func:returnBool('Blur', 'Acrylic')]+[&Func:returnBool('Blur', 'Blur')]*2)),0,(300/3*[Set.S]),(30*[Set.S]),(7*[Set.S]) | Fill Color #Set.Text_Color# | StrokeWidth 0
-Y=([Option15:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option20:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
 [Blur:0]
 Meter=String
@@ -335,7 +399,7 @@ Meter=Shape
 2Act=[!WriteKeyValue Variables BlurCorner "Round" "#Sec.SaveLocation#"]
 MeterStyle=Set.Pick3:S
 Shape2=Rectangle (100*[Set.S]*([&Func:returnBool('BlurCorner', 'RoundSmall')]+[&Func:returnBool('BlurCorner', 'Round')]*2)),0,(300/3*[Set.S]),(30*[Set.S]),(7*[Set.S]) | Fill Color #Set.Text_Color# | StrokeWidth 0
-Y=([Option16:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option21:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
 [BlurCorner:0]
 Meter=String
@@ -362,8 +426,8 @@ MeterStyle=Set.Textbox:S
 Type=Int|0|255
 
 
-Y=([Option17:Y]-#Set.P#+(-30/2+8)*[Set.S])
-[Value17]
+Y=([Option22:Y]-#Set.P#+(-30/2+8)*[Set.S])
+[Value22]
 Meter=String
 Text=#Alpha#
 
@@ -372,43 +436,37 @@ MeterStyle=Set.String:S | Set.Value:S
 Meter=Shape
 MeterStyle=Set.Color:S
 LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
-Y=([Option18:Y]-#Set.P#+(-30/2+8)*[Set.S])
-
-[Color]
-Meter=Shape
-MeterStyle=Set.Color:S
-LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
-Y=([Option19:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option23:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
 [Border]
 Meter=Shape
 MeterStyle=Set.Color:S
 LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
-Y=([Option20:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option24:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
 [FontColor]
 Meter=Shape
 MeterStyle=Set.Color:S
 LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
-Y=([Option21:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option25:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
 [DarkColor]
 Meter=Shape
 MeterStyle=Set.Color:S
 LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
-Y=([Option22:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option26:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
 [BoxBorder]
 Meter=Shape
 MeterStyle=Set.Color:S
 LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
-Y=([Option23:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option27:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
 [BoxColor]
 Meter=Shape
 MeterStyle=Set.Color:S
 LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
-Y=([Option24:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option28:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
 
 
@@ -459,6 +517,30 @@ Y=([Option24:Y]-#Set.P#+(-30/2+8)*[Set.S])
 ;[Start text]
 ;Type=String
 ;Variable=StartText
+;
+;[Background modification]
+;Type=Header
+;[Modify launched background]
+;Type=Bool
+;Variable=BackgroundMod
+;[Background blur]
+;Type=Switch
+;Limit=3
+;String=None|Acrylic|Blur
+;StringSet=None|Acrylic|Blur
+;Variable=Blur
+;Hidden=!BackgroundMod
+;SaveLocation=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
+;[Background color]
+;Type=Color
+;Limit=2
+;Variable=Solid
+;SaveLocation=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
+;Hidden=!BackgroundMod
+;
+;[Include]
+;Type=Include
+;Variable=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
 ;
 ;[Fill and coloring]
 ;Type=Header

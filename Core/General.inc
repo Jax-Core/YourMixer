@@ -15,7 +15,6 @@ MouseLeaveAction=[!SetOption #CURRENTSECTION# Fill "Fill Color [&Func:LocalVar('
 Container=ContentContainer
 DynamicVariables=1
 Hidden=(1-#Animated#)
-@include20Custom=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
 [Header01]
 Meter=String
 Text=Activation & system tray
@@ -59,7 +58,7 @@ FontColor=#Set.Text_Color#,(#Tray# = 1 ? 255 : 150)
 MeterStyle=Set.String:S | Set.OptionName:S
 [Header07]
 Meter=String
-Text=Applications
+Text=Applications and operation
 MeterStyle=Set.String:S | Set.OptionCat:S
 [Option08]
 Meter=String
@@ -74,29 +73,29 @@ Meter=String
 Text=Excluded applications
 
 MeterStyle=Set.String:S | Set.OptionName:S
-[Header10]
+[Divider10]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option10]
+Meter=String
+Text=Level to change when scrolling
+
+MeterStyle=Set.String:S | Set.OptionName:S
+[Header11]
 Meter=String
 Text=Animation
 MeterStyle=Set.String:S | Set.OptionCat:S
-[Option11]
+[Option12]
 Meter=String
 Text=Slide animations
 
-MeterStyle=Set.String:S | Set.OptionName:S
-[Divider12]
-Meter=Shape
-MeterStyle=Set.Div:S
-[Option12]
-Meter=String
-Text=Animation easing type
-FontColor=#Set.Text_Color#,(#Animated# = 1 ? 255 : 150)
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider13]
 Meter=Shape
 MeterStyle=Set.Div:S
 [Option13]
 Meter=String
-Text=Animation direction
+Text=Animation easing type
 FontColor=#Set.Text_Color#,(#Animated# = 1 ? 255 : 150)
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider14]
@@ -104,7 +103,7 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option14]
 Meter=String
-Text=Animation steps
+Text=Animation direction
 FontColor=#Set.Text_Color#,(#Animated# = 1 ? 255 : 150)
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider15]
@@ -112,33 +111,16 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option15]
 Meter=String
-Text=Animation displacement
+Text=Animation steps
 FontColor=#Set.Text_Color#,(#Animated# = 1 ? 255 : 150)
 MeterStyle=Set.String:S | Set.OptionName:S
-[Header16]
-Meter=String
-Text=Background modification
-MeterStyle=Set.String:S | Set.OptionCat:S
-[Option17]
-Meter=String
-Text=Modify launched background
-
-MeterStyle=Set.String:S | Set.OptionName:S
-[Divider18]
+[Divider16]
 Meter=Shape
 MeterStyle=Set.Div:S
-[Option18]
+[Option16]
 Meter=String
-Text=Background blur
-FontColor=#Set.Text_Color#,(#BackgroundMod# = 1 ? 255 : 150)
-MeterStyle=Set.String:S | Set.OptionName:S
-[Divider19]
-Meter=Shape
-MeterStyle=Set.Div:S
-[Option19]
-Meter=String
-Text=Background color
-FontColor=#Set.Text_Color#,(#BackgroundMod# = 1 ? 255 : 150)
+Text=Animation displacement
+FontColor=#Set.Text_Color#,(#Animated# = 1 ? 255 : 150)
 MeterStyle=Set.String:S | Set.OptionName:S
 [StayOnDesktop]
 Meter=Shape
@@ -231,28 +213,40 @@ Meter=String
 Text=#ExcludeApp#
 
 MeterStyle=Set.String:S | Set.Value:S
+[VolumeChangeLevel]
+Meter=Shape
+MeterStyle=Set.Textbox:S
+Type=1|20
+
+
+Y=([Option10:Y]-#Set.P#+(-30/2+8)*[Set.S])
+[Value10]
+Meter=String
+Text=#VolumeChangeLevel#
+
+MeterStyle=Set.String:S | Set.Value:S
 [Animated]
 Meter=Shape
 MeterStyle=Set.Bool:S
 
 
-Y=([Option11:Y]-#Set.P#+(-20/2+8)*[Set.S])
-[Button12]
+Y=([Option12:Y]-#Set.P#+(-20/2+8)*[Set.S])
+[Button13]
 Meter=Shape
 MeterStyle=Set.Button:S
-Y=([Option12:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option13:Y]-#Set.P#+(-30/2+8)*[Set.S])
 OverColor=#Set.Accent_color#,150
 LeaveColor=#Set.Accent_color#,50
 Act=[!CommandMeasure Func "startSide('Ease')"]
 Hidden=(1-#Animated#)
-[Icon12]
+[Icon13]
 Meter=String
 Text=[\xe895]
 FontFace=Material Icons Round
 FontSize=(14*[Set.S])
 Hidden=(1-#Animated#)
 MeterStyle=Set.String:S | Set.Value:S
-[Value12]
+[Value13]
 Meter=String
 X=(-25*[Set.S])r
 Y=r
@@ -262,7 +256,7 @@ MeterStyle=Set.String:S | Set.Value:S
 [Left]
 Meter=Shape
 X=(#Set.W#-#Set.L#-#Set.P#*2-((26*4+5*3)*[Set.S]))
-Y=([Option13:Y]-#Set.P#+(-26/2+8)*[Set.S])
+Y=([Option14:Y]-#Set.P#+(-26/2+8)*[Set.S])
 MeterStyle=Sec.DirButton:S
 [Right]
 Meter=Shape
@@ -282,8 +276,8 @@ MeterStyle=Set.Textbox:S
 Type=Int|10|100
 Hidden=(1-#Animated#)
 
-Y=([Option14:Y]-#Set.P#+(-30/2+8)*[Set.S])
-[Value14]
+Y=([Option15:Y]-#Set.P#+(-30/2+8)*[Set.S])
+[Value15]
 Meter=String
 Text=#AniSteps#
 Hidden=(1-#Animated#)
@@ -294,58 +288,12 @@ MeterStyle=Set.Textbox:S
 Type=Int|5|300
 Hidden=(1-#Animated#)
 
-Y=([Option15:Y]-#Set.P#+(-30/2+8)*[Set.S])
-[Value15]
+Y=([Option16:Y]-#Set.P#+(-30/2+8)*[Set.S])
+[Value16]
 Meter=String
 Text=#AnimationDisplacement#
 Hidden=(1-#Animated#)
 MeterStyle=Set.String:S | Set.Value:S
-[BackgroundMod]
-Meter=Shape
-MeterStyle=Set.Bool:S
-
-
-Y=([Option17:Y]-#Set.P#+(-20/2+8)*[Set.S])
-[Blur:]
-Meter=Shape
-0Act=[!WriteKeyValue Variables Blur "None" "#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc"]
-1Act=[!WriteKeyValue Variables Blur "Acrylic" "#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc"]
-2Act=[!WriteKeyValue Variables Blur "Blur" "#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc"]
-MeterStyle=Set.Pick3:S
-Shape2=Rectangle (100*[Set.S]*([&Func:returnBool('Blur', 'Acrylic')]+[&Func:returnBool('Blur', 'Blur')]*2)),0,(300/3*[Set.S]),(30*[Set.S]),(7*[Set.S]) | Fill Color #Set.Text_Color# | StrokeWidth 0
-Y=([Option18:Y]-#Set.P#+(-30/2+8)*[Set.S])
-Hidden=(1-#BackgroundMod#)
-[Blur:0]
-Meter=String
-Text=None
-FontColor=[&Func:returnBool('Blur', 'None', '#Set.Pri_color#', '#Set.Text_Color#')]
-MeterStyle=Set.String:S | Set.PickOption3_0:S
-Hidden=(1-#BackgroundMod#)
-[Blur:1]
-Meter=String
-Text=Acrylic
-FontColor=[&Func:returnBool('Blur', 'Acrylic', '#Set.Pri_color#', '#Set.Text_Color#')]
-MeterStyle=Set.String:S | Set.PickOption3_1:S
-Hidden=(1-#BackgroundMod#)
-[Blur:2]
-Meter=String
-Text=Blur
-FontColor=[&Func:returnBool('Blur', 'Blur', '#Set.Pri_color#', '#Set.Text_Color#')]
-MeterStyle=Set.String:S | Set.PickOption3_2:S
-Hidden=Hidden=(1-#BackgroundMod#)
-
-[Solid]
-Meter=Shape
-MeterStyle=Set.ColorPacity:S
-LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#Color" "FileName=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
-Y=([Option19:Y]-#Set.P#+(-30/2+8)*[Set.S])
-Type=Num|1|255
-Hidden=(1-#BackgroundMod#)
-[Value19]
-Meter=String
-Text=#SolidOpacity#
-MeterStyle=Set.String:S | Set.Pacity:S
-Hidden=(1-#BackgroundMod#)
 
 
 
@@ -373,7 +321,7 @@ Hidden=(1-#BackgroundMod#)
 ;String=#IconTheme#
 ;Hidden=!Tray
 ;
-;[Applications]
+;[Applications and operation]
 ;Type=Header
 ;[Stacking of duplicates of application channels]
 ;Type=Switch
@@ -384,6 +332,10 @@ Hidden=(1-#BackgroundMod#)
 ;[Excluded applications]
 ;Type=String
 ;Variable=ExcludeApp
+;[Level to change when scrolling]
+;Type=String
+;Variable=VolumeChangeLevel
+;Limit=1|20
 ;
 ;[Animation]
 ;Type=Header
@@ -409,27 +361,3 @@ Hidden=(1-#BackgroundMod#)
 ;Limit=Int|5|300
 ;Variable=AnimationDisplacement
 ;Hidden=!Animated
-;
-;[Background modification]
-;Type=Header
-;[Modify launched background]
-;Type=Bool
-;Variable=BackgroundMod
-;[Background blur]
-;Type=Switch
-;Limit=3
-;String=None|Acrylic|Blur
-;StringSet=None|Acrylic|Blur
-;Variable=Blur
-;Hidden=!BackgroundMod
-;SaveLocation=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
-;[Background color]
-;Type=Color
-;Limit=2
-;Variable=Solid
-;SaveLocation=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
-;Hidden=!BackgroundMod
-;
-;[Include]
-;Type=Include
-;Variable=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
