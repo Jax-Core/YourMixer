@@ -15,6 +15,7 @@ MouseLeaveAction=[!SetOption #CURRENTSECTION# Fill "Fill Color [&Func:LocalVar('
 Container=ContentContainer
 DynamicVariables=1
 Hidden=(1-#Animated#)
+@include18Custom=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
 [Header01]
 Meter=String
 Text=Activation & system tray
@@ -129,6 +130,31 @@ MeterStyle=Set.Div:S
 Meter=String
 Text=Animation displacement
 FontColor=#Set.Text_Color#,(#Animated# = 1 ? 255 : 150)
+MeterStyle=Set.String:S | Set.OptionName:S
+[Header19]
+Meter=String
+Text=Background modification
+MeterStyle=Set.String:S | Set.OptionCat:S
+[Option20]
+Meter=String
+Text=Modify launched background
+
+MeterStyle=Set.String:S | Set.OptionName:S
+[Divider21]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option21]
+Meter=String
+Text=Background blur
+FontColor=#Set.Text_Color#,(#BackgroundMod# = 1 ? 255 : 150)
+MeterStyle=Set.String:S | Set.OptionName:S
+[Divider22]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option22]
+Meter=String
+Text=Background color
+FontColor=#Set.Text_Color#,(#BackgroundMod# = 1 ? 255 : 150)
 MeterStyle=Set.String:S | Set.OptionName:S
 [StayOnDesktop]
 Meter=Shape
@@ -308,9 +334,57 @@ Meter=String
 Text=#AnimationDisplacement#
 Hidden=(1-#Animated#)
 MeterStyle=Set.String:S | Set.Value:S
+[BackgroundMod]
+Meter=Shape
+MeterStyle=Set.Bool:S
+
+
+Y=([Option20:Y]-#Set.P#+(-20/2+8)*[Set.S])
+[Blur:]
+Meter=Shape
+0Act=[!WriteKeyValue Variables Blur "None" "#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc"]
+1Act=[!WriteKeyValue Variables Blur "Acrylic" "#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc"]
+2Act=[!WriteKeyValue Variables Blur "Blur" "#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc"]
+MeterStyle=Set.Pick3:S
+Shape2=Rectangle (100*[Set.S]*([&Func:returnBool('Blur', 'Acrylic')]+[&Func:returnBool('Blur', 'Blur')]*2)),0,(300/3*[Set.S]),(30*[Set.S]),(7*[Set.S]) | Fill Color #Set.Text_Color# | StrokeWidth 0
+Y=([Option21:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Hidden=(1-#BackgroundMod#)
+[Blur:0]
+Meter=String
+Text=None
+FontColor=[&Func:returnBool('Blur', 'None', '#Set.Pri_color#', '#Set.Text_Color#')]
+MeterStyle=Set.String:S | Set.PickOption3_0:S
+Hidden=(1-#BackgroundMod#)
+[Blur:1]
+Meter=String
+Text=Acrylic
+FontColor=[&Func:returnBool('Blur', 'Acrylic', '#Set.Pri_color#', '#Set.Text_Color#')]
+MeterStyle=Set.String:S | Set.PickOption3_1:S
+Hidden=(1-#BackgroundMod#)
+[Blur:2]
+Meter=String
+Text=Blur
+FontColor=[&Func:returnBool('Blur', 'Blur', '#Set.Pri_color#', '#Set.Text_Color#')]
+MeterStyle=Set.String:S | Set.PickOption3_2:S
+Hidden=Hidden=(1-#BackgroundMod#)
+
+[Solid]
+Meter=Shape
+MeterStyle=Set.ColorPacity:S
+LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#Color" "FileName=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
+Y=([Option22:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Type=Num|1|255
+Hidden=(1-#BackgroundMod#)
+[Value22]
+Meter=String
+Text=#SolidOpacity#
+MeterStyle=Set.String:S | Set.Pacity:S
+Hidden=(1-#BackgroundMod#)
 
 
 
+;
+;
 ;[Activation & system tray]
 ;Type=Header
 ;[Use module as widget]
@@ -378,3 +452,27 @@ MeterStyle=Set.String:S | Set.Value:S
 ;Limit=Int|5|300
 ;Variable=AnimationDisplacement
 ;Hidden=!Animated
+;
+;[Include]
+;Type=Include
+;Variable=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
+;
+;[Background modification]
+;Type=Header
+;[Modify launched background]
+;Type=Bool
+;Variable=BackgroundMod
+;[Background blur]
+;Type=Switch
+;Limit=3
+;String=None|Acrylic|Blur
+;StringSet=None|Acrylic|Blur
+;Variable=Blur
+;Hidden=!BackgroundMod
+;SaveLocation=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
+;[Background color]
+;Type=Color
+;Limit=2
+;Variable=Solid
+;SaveLocation=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
+;Hidden=!BackgroundMod
