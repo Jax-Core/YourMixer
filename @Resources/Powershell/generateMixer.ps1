@@ -1,6 +1,6 @@
 function generateMixer {
 
-    $saveLocation = "$($RmAPI.VariableStr('ROOTCONFIGPATH'))Main\Accessories\Page\Main.ini"
+    $SaveLocation = "$($RmAPI.VariableStr('ROOTCONFIGPATH'))Main\Accessories\Page\Main.ini"
     $scale = $RmAPI.VariableStr('scale')
     $pageW = $RmAPI.VariableStr('W')
     $collapsetype = $RmAPI.VariableStr('CollapseIcons')
@@ -35,8 +35,8 @@ MeterStyle=DividerStyle
     $additionalSize = 40
     }
 
-    # $pageH = ((80+(40+($RmAPI.Variable('additionalPadding')))*($rows+1-$SkipIndex.Count)+20+$additionalSize) * $scale)
-    $pad = $RmAPI.Variable('additionalPadding')
+    # $pageH = ((80+(40+($RmAPI.Variable('LinePad')))*($rows+1-$SkipIndex.Count)+20+$additionalSize) * $scale)
+    $pad = $RmAPI.Variable('LinePad')
     $pageH = ((80 + (40 + $pad) * ($rows - $SkipIndex.Count) + 40 + $additionalSize) * $scale)
 
     if ($collapsetype -ne 2) {
@@ -51,6 +51,15 @@ Index=$i
 Substitute=#ReplaceApp#
 Group=UpdateWhenChange
 
+[AppVol$i]
+Measure=Plugin
+Plugin=AppVolume
+Parent=AppVolumeParent
+Index=$i
+NumberType=Peak
+UpdateDivider=1
+Disabled=(#VolumePeaks#-1)
+
 [AppVolPer$i]
 Measure=Calc
 Formula=Round(AppVol$i * 100)
@@ -63,11 +72,11 @@ MeterStyle=ImageStyle | ImageStyle:#FetchIcons#
 
 [Vol$i]
 Meter=String
-MeterStyle=RegularText | TextStyle | TextStyle:#FetchIcons#
+MeterStyle=RegularText | TextStyle | TextStyle:#FetchIcons# | TextStyle:DisplayName#Displayname#
 
 [$i]
 Meter=Shape
-MeterStyle=ShapeStyle
+MeterStyle=ShapeStyle | ShapeStyle:Chameleon#Chameleon#
 
 [VolPer$i]
 Meter=String
@@ -81,6 +90,7 @@ MeterStyle=RegularText | VolStyle
         for (($i = 1); ($i -le $rows) ; $i++) {
             if ($i -notin $SkipIndex) {
                 $fileContent += @"
+
 [AppVol$i]
 Measure=Plugin
 Plugin=AppVolume
@@ -88,6 +98,15 @@ Parent=AppVolumeParent
 Index=$i
 Substitute=#ReplaceApp#
 Group=UpdateWhenChange
+
+[AppVolPeak$i]
+Measure=Plugin
+Plugin=AppVolume
+Parent=AppVolumeParent
+Index=$i
+NumberType=Peak
+UpdateDivider=1
+Disabled=(#VolumePeaks#-1)
 
 [AppVolPer$i]
 Measure=Calc
@@ -112,7 +131,7 @@ MeterStyle=ImageStyle | ImageStyle:#FetchIcons#
 
 [Vol$i]
 Meter=String
-MeterStyle=RegularText | TextStyle | TextStyle:#FetchIcons#
+MeterStyle=RegularText | TextStyle | TextStyle:#FetchIcons# | TextStyle:DisplayName#Displayname#
 LeftMouseDownAction=$bang[!UpdateMeasureGroup UpdateWhenChange][!UpdateMeter *][!Redraw]
 
 "@
@@ -122,7 +141,7 @@ LeftMouseDownAction=$bang[!UpdateMeasureGroup UpdateWhenChange][!UpdateMeter *][
 [$($occuranceArray[$j] + 1)]
 Meter=Shape
 X=(#LeftW# * #scale# + ((#W#-(#LeftW#+22+75)*#scale#)/ $($AppHash[$AppArray[$i-1]].Count) - 10 * ($($AppHash[$AppArray[$i-1]].Count) - 1) + 20)* $j)
-MeterStyle=ShapeStyle | ShapeStyle:$($AppHash[$AppArray[$i-1]].Count)
+MeterStyle=ShapeStyle | ShapeStyle:Chameleon#Chameleon# | ShapeStyle:$($AppHash[$AppArray[$i-1]].Count)
 
 "@
                     }
@@ -132,11 +151,11 @@ MeterStyle=ShapeStyle | ShapeStyle:$($AppHash[$AppArray[$i-1]].Count)
 
 [Vol$i]
 Meter=String
-MeterStyle=RegularText | TextStyle | TextStyle:#FetchIcons#
+MeterStyle=RegularText | TextStyle | TextStyle:#FetchIcons# | TextStyle:DisplayName#Displayname#
                 
 [$i]
 Meter=Shape
-MeterStyle=ShapeStyle
+MeterStyle=ShapeStyle | ShapeStyle:Chameleon#Chameleon#
 
 "@
                 }
@@ -157,6 +176,15 @@ Index=$i
 Substitute=#ReplaceApp#
 Group=UpdateWhenChange
 
+[AppVol$i]
+Measure=Plugin
+Plugin=AppVolume
+Parent=AppVolumeParent
+Index=$i
+NumberType=Peak
+UpdateDivider=1
+Disabled=(#VolumePeaks#-1)
+
 [AppVolPer$i]
 Measure=Calc
 Formula=Round(AppVol$i * 100)
@@ -171,5 +199,5 @@ Substitute="-100":"Muted"
 
     $fileContent | Out-File -FilePath $($RmAPI.VariableStr('ROOTCONFIGPATH') + 'Main\\Accessories\\Page\\Variants\\VolumeMixerCache.inc') -Encoding unicode
 
-    $RmAPI.Bang("[!WriteKeyValue Variables W $pageW `"$saveLocation`"][!WriteKeyValue Variables H $pageH `"$saveLocation`"][!Activateconfig `"YourMixer\Main\Accessories\Page`"]")
+    $RmAPI.Bang("[!WriteKeyValue Variables W $pageW `"$SaveLocation`"][!WriteKeyValue Variables H $pageH `"$SaveLocation`"][!Activateconfig `"YourMixer\Main\Accessories\Page`"]")
 }

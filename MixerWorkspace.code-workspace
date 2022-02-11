@@ -4,6 +4,9 @@
 			"path": "."
 		},
 		{
+			"path": "..\\AudioChanger with ContextMenu"
+		},
+		{
 			"path": "..\\AppVolumeExample"
 		}
 	],

@@ -67,7 +67,7 @@ StringAlign=CenterBottom
 Text=Finish
 MouseOverAction=[!SetOption #CURRENTSECTION# InlineSetting "Underline"][!UpdateMeter #CURRENTSECTION#][!Redraw]
 MouseLeaveAction=[!SetOption #CURRENTSECTION# InlineSetting ""][!UpdateMeter #CURRENTSECTION#][!Redraw]
-LeftMouseUpAction=[!CommandMEasure ActionTimer "Execute 2"]
+LeftMouseUpAction=[!CommandMEasure ActionTimer "Execute 2"][!ActivateConfig "#JaxCore\Accessories\Popup"]
 MeterStyle=Sec.String:S
 
 [Esc]

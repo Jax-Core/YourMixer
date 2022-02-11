@@ -87,7 +87,7 @@ Text=Animation
 MeterStyle=Set.String:S | Set.OptionCat:S
 [Option12]
 Meter=String
-Text=Slide animations
+Text=Animate volume peaks next to slider
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider13]
@@ -95,15 +95,15 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option13]
 Meter=String
-Text=Animation easing type
-FontColor=#Set.Text_Color#,(#Animated# = 1 ? 255 : 150)
+Text=Slide animations
+
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider14]
 Meter=Shape
 MeterStyle=Set.Div:S
 [Option14]
 Meter=String
-Text=Animation direction
+Text=Animation easing type
 FontColor=#Set.Text_Color#,(#Animated# = 1 ? 255 : 150)
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider15]
@@ -111,13 +111,21 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option15]
 Meter=String
-Text=Animation steps
+Text=Animation direction
 FontColor=#Set.Text_Color#,(#Animated# = 1 ? 255 : 150)
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider16]
 Meter=Shape
 MeterStyle=Set.Div:S
 [Option16]
+Meter=String
+Text=Animation steps
+FontColor=#Set.Text_Color#,(#Animated# = 1 ? 255 : 150)
+MeterStyle=Set.String:S | Set.OptionName:S
+[Divider17]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option17]
 Meter=String
 Text=Animation displacement
 FontColor=#Set.Text_Color#,(#Animated# = 1 ? 255 : 150)
@@ -225,28 +233,34 @@ Meter=String
 Text=#VolumeChangeLevel#
 
 MeterStyle=Set.String:S | Set.Value:S
-[Animated]
+[VolumePeaks]
 Meter=Shape
 MeterStyle=Set.Bool:S
 
 
 Y=([Option12:Y]-#Set.P#+(-20/2+8)*[Set.S])
-[Button13]
+[Animated]
+Meter=Shape
+MeterStyle=Set.Bool:S
+
+
+Y=([Option13:Y]-#Set.P#+(-20/2+8)*[Set.S])
+[Button14]
 Meter=Shape
 MeterStyle=Set.Button:S
-Y=([Option13:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option14:Y]-#Set.P#+(-30/2+8)*[Set.S])
 OverColor=#Set.Accent_color#,150
 LeaveColor=#Set.Accent_color#,50
 Act=[!CommandMeasure Func "startSide('Ease')"]
 Hidden=(1-#Animated#)
-[Icon13]
+[Icon14]
 Meter=String
 Text=[\xe895]
 FontFace=Material Icons Round
 FontSize=(14*[Set.S])
 Hidden=(1-#Animated#)
 MeterStyle=Set.String:S | Set.Value:S
-[Value13]
+[Value14]
 Meter=String
 X=(-25*[Set.S])r
 Y=r
@@ -256,7 +270,7 @@ MeterStyle=Set.String:S | Set.Value:S
 [Left]
 Meter=Shape
 X=(#Set.W#-#Set.L#-#Set.P#*2-((26*4+5*3)*[Set.S]))
-Y=([Option14:Y]-#Set.P#+(-26/2+8)*[Set.S])
+Y=([Option15:Y]-#Set.P#+(-26/2+8)*[Set.S])
 MeterStyle=Sec.DirButton:S
 [Right]
 Meter=Shape
@@ -276,8 +290,8 @@ MeterStyle=Set.Textbox:S
 Type=Int|10|100
 Hidden=(1-#Animated#)
 
-Y=([Option15:Y]-#Set.P#+(-30/2+8)*[Set.S])
-[Value15]
+Y=([Option16:Y]-#Set.P#+(-30/2+8)*[Set.S])
+[Value16]
 Meter=String
 Text=#AniSteps#
 Hidden=(1-#Animated#)
@@ -288,8 +302,8 @@ MeterStyle=Set.Textbox:S
 Type=Int|5|300
 Hidden=(1-#Animated#)
 
-Y=([Option16:Y]-#Set.P#+(-30/2+8)*[Set.S])
-[Value16]
+Y=([Option17:Y]-#Set.P#+(-30/2+8)*[Set.S])
+[Value17]
 Meter=String
 Text=#AnimationDisplacement#
 Hidden=(1-#Animated#)
@@ -339,6 +353,9 @@ MeterStyle=Set.String:S | Set.Value:S
 ;
 ;[Animation]
 ;Type=Header
+;[Animate volume peaks next to slider]
+;Type=Bool
+;Variable=VolumePeaks
 ;[Slide animations]
 ;Type=Bool
 ;Variable=Animated

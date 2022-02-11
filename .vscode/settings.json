@@ -1,0 +1,10 @@
+{
+    "Lua.diagnostics.globals": [
+        "SKIN",
+        "SELF",
+        "tween"
+    ],
+    "Lua.diagnostics.disable": [
+        "deprecated"
+    ]
+}

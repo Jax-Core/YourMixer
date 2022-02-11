@@ -1,5 +1,5 @@
 [Variables]
-@include18Custom=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
+@include20Custom=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc
 [Header01]
 Meter=String
 Text=Dimensions
@@ -38,7 +38,7 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option06]
 Meter=String
-Text=Additional padding between rows
+Text=Padding between each slider rows
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Header07]
@@ -47,7 +47,7 @@ Text=Selections
 MeterStyle=Set.String:S | Set.OptionCat:S
 [Option08]
 Meter=String
-Text=Show application icons
+Text=Show application names
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider09]
@@ -55,7 +55,7 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option09]
 Meter=String
-Text=Font face
+Text=Show application icons
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider10]
@@ -63,7 +63,7 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option10]
 Meter=String
-Text=Corner roundness
+Text=Font face
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider11]
@@ -71,7 +71,7 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option11]
 Meter=String
-Text=Divider between sysVol and appVol
+Text=Corner roundness
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider12]
@@ -79,7 +79,7 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option12]
 Meter=String
-Text=Orb image
+Text=Divider between sysVol and appVol
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider13]
@@ -87,57 +87,57 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option13]
 Meter=String
+Text=Mixer icon in top left
+
+MeterStyle=Set.String:S | Set.OptionName:S
+[Divider14]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option14]
+Meter=String
+Text=Mixer icon
+FontColor=#Set.Text_Color#,(#MixerIcon# = 1 ? 255 : 150)
+MeterStyle=Set.String:S | Set.OptionName:S
+[Divider15]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option15]
+Meter=String
 Text=Start text
 
 MeterStyle=Set.String:S | Set.OptionName:S
-[Header14]
+[Header16]
 Meter=String
 Text=Background modification
 MeterStyle=Set.String:S | Set.OptionCat:S
-[Option15]
+[Option17]
 Meter=String
 Text=Modify launched background
 
 MeterStyle=Set.String:S | Set.OptionName:S
-[Divider16]
+[Divider18]
 Meter=Shape
 MeterStyle=Set.Div:S
-[Option16]
+[Option18]
 Meter=String
 Text=Background blur
 FontColor=#Set.Text_Color#,(#BackgroundMod# = 1 ? 255 : 150)
 MeterStyle=Set.String:S | Set.OptionName:S
-[Divider17]
+[Divider19]
 Meter=Shape
 MeterStyle=Set.Div:S
-[Option17]
+[Option19]
 Meter=String
 Text=Background color
 FontColor=#Set.Text_Color#,(#BackgroundMod# = 1 ? 255 : 150)
 MeterStyle=Set.String:S | Set.OptionName:S
-[Header19]
+[Header21]
 Meter=String
 Text=Fill and coloring
 MeterStyle=Set.String:S | Set.OptionCat:S
-[Option20]
-Meter=String
-Text=Blur type
-
-MeterStyle=Set.String:S | Set.OptionName:S
-[Divider21]
-Meter=Shape
-MeterStyle=Set.Div:S
-[Option21]
-Meter=String
-Text=Blur rounding size
-
-MeterStyle=Set.String:S | Set.OptionName:S
-[Divider22]
-Meter=Shape
-MeterStyle=Set.Div:S
 [Option22]
 Meter=String
-Text=Panel opacity
+Text=Blur type
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider23]
@@ -145,7 +145,7 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option23]
 Meter=String
-Text=Accent color
+Text=Blur rounding size
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider24]
@@ -153,7 +153,7 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option24]
 Meter=String
-Text=Divider color
+Text=Panel opacity
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider25]
@@ -161,7 +161,7 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option25]
 Meter=String
-Text=Font color
+Text=Accent color
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider26]
@@ -169,7 +169,7 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option26]
 Meter=String
-Text=Dark color
+Text=Node hover color
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider27]
@@ -177,7 +177,7 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option27]
 Meter=String
-Text=Box border color
+Text=Node color
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Divider28]
@@ -185,7 +185,39 @@ Meter=Shape
 MeterStyle=Set.Div:S
 [Option28]
 Meter=String
-Text=Box color
+Text=Divider color
+
+MeterStyle=Set.String:S | Set.OptionName:S
+[Divider29]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option29]
+Meter=String
+Text=Font color
+
+MeterStyle=Set.String:S | Set.OptionName:S
+[Divider30]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option30]
+Meter=String
+Text=Volume peak color
+
+MeterStyle=Set.String:S | Set.OptionName:S
+[Divider31]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option31]
+Meter=String
+Text=Volume sider hover color
+
+MeterStyle=Set.String:S | Set.OptionName:S
+[Divider32]
+Meter=Shape
+MeterStyle=Set.Div:S
+[Option32]
+Meter=String
+Text=Volume sider color
 
 MeterStyle=Set.String:S | Set.OptionName:S
 [Scale]
@@ -227,7 +259,7 @@ MeterStyle=Set.String:S | Set.Value:S
 [LeftW]
 Meter=Shape
 MeterStyle=Set.Textbox:S
-Type=Num|100|#W#
+Type=Num|22|#W#
 
 
 Y=([Option05:Y]-#Set.P#+(-30/2+8)*[Set.S])
@@ -236,7 +268,7 @@ Meter=String
 Text=#LeftW#
 
 MeterStyle=Set.String:S | Set.Value:S
-[additionalPadding]
+[LinePad]
 Meter=Shape
 MeterStyle=Set.Textbox:S
 Type=Num|0|100
@@ -245,23 +277,29 @@ Type=Num|0|100
 Y=([Option06:Y]-#Set.P#+(-30/2+8)*[Set.S])
 [Value06]
 Meter=String
-Text=#additionalPadding#
+Text=#LinePad#
 
 MeterStyle=Set.String:S | Set.Value:S
-[FetchIcons]
+[DisplayName]
 Meter=Shape
 MeterStyle=Set.Bool:S
 
 
 Y=([Option08:Y]-#Set.P#+(-20/2+8)*[Set.S])
+[FetchIcons]
+Meter=Shape
+MeterStyle=Set.Bool:S
+
+
+Y=([Option09:Y]-#Set.P#+(-20/2+8)*[Set.S])
 [Font]
 Meter=Shape
 MeterStyle=Set.Textbox:S
 
 
 
-Y=([Option09:Y]-#Set.P#+(-30/2+8)*[Set.S])
-[Value09]
+Y=([Option10:Y]-#Set.P#+(-30/2+8)*[Set.S])
+[Value10]
 Meter=String
 Text=#Font#
 
@@ -272,8 +310,8 @@ MeterStyle=Set.Textbox:S
 Type=Num|0|100
 
 
-Y=([Option10:Y]-#Set.P#+(-30/2+8)*[Set.S])
-[Value10]
+Y=([Option11:Y]-#Set.P#+(-30/2+8)*[Set.S])
+[Value11]
 Meter=String
 Text=#R#
 
@@ -283,28 +321,34 @@ Meter=Shape
 MeterStyle=Set.Bool:S
 
 
-Y=([Option11:Y]-#Set.P#+(-20/2+8)*[Set.S])
-[Button12]
+Y=([Option12:Y]-#Set.P#+(-20/2+8)*[Set.S])
+[MixerIcon]
+Meter=Shape
+MeterStyle=Set.Bool:S
+
+
+Y=([Option13:Y]-#Set.P#+(-20/2+8)*[Set.S])
+[Button14]
 Meter=Shape
 MeterStyle=Set.Button:S
-Y=([Option12:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option14:Y]-#Set.P#+(-30/2+8)*[Set.S])
 OverColor=#Set.Accent_color#,150
 LeaveColor=#Set.Accent_color#,50
 Act=[!CommandMEasure Func "interactionBox([[#SKINSPATH##Skin.Name#\Core\InteractionBox\MixerOrb.inc]], '#IconName#')"]
-
-[Icon12]
+Hidden=(1-#MixerIcon#)
+[Icon14]
 Meter=String
 Text=[\xe895]
 FontFace=Material Icons Round
 FontSize=(14*[Set.S])
-
+Hidden=(1-#MixerIcon#)
 MeterStyle=Set.String:S | Set.Value:S
-[Value12]
+[Value14]
 Meter=String
 X=(-25*[Set.S])r
 Y=r
 Text=#IconName#
-
+Hidden=(1-#MixerIcon#)
 MeterStyle=Set.String:S | Set.Value:S
 [StartText]
 Meter=Shape
@@ -312,8 +356,8 @@ MeterStyle=Set.Textbox:S
 
 
 
-Y=([Option13:Y]-#Set.P#+(-30/2+8)*[Set.S])
-[Value13]
+Y=([Option15:Y]-#Set.P#+(-30/2+8)*[Set.S])
+[Value15]
 Meter=String
 Text=#StartText#
 
@@ -323,7 +367,7 @@ Meter=Shape
 MeterStyle=Set.Bool:S
 
 
-Y=([Option15:Y]-#Set.P#+(-20/2+8)*[Set.S])
+Y=([Option17:Y]-#Set.P#+(-20/2+8)*[Set.S])
 [Blur:]
 Meter=Shape
 0Act=[!WriteKeyValue Variables Blur "None" "#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc"]
@@ -331,7 +375,7 @@ Meter=Shape
 2Act=[!WriteKeyValue Variables Blur "Blur" "#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc"]
 MeterStyle=Set.Pick3:S
 Shape2=Rectangle (100*[Set.S]*([&Func:returnBool('Blur', 'Acrylic')]+[&Func:returnBool('Blur', 'Blur')]*2)),0,(300/3*[Set.S]),(30*[Set.S]),(7*[Set.S]) | Fill Color #Set.Text_Color# | StrokeWidth 0
-Y=([Option16:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option18:Y]-#Set.P#+(-30/2+8)*[Set.S])
 Hidden=(1-#BackgroundMod#)
 [Blur:0]
 Meter=String
@@ -352,16 +396,16 @@ FontColor=[&Func:returnBool('Blur', 'Blur', '#Set.Pri_color#', '#Set.Text_Color#
 MeterStyle=Set.String:S | Set.PickOption3_2:S
 Hidden=Hidden=(1-#BackgroundMod#)
 
-[Color]
+[Solid]
 Meter=Shape
 MeterStyle=Set.ColorPacity:S
 LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#Color" "FileName=#SKINSPATH##Skin.Name#\Main\Accessories\Unload\Vars.inc" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
-Y=([Option17:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option19:Y]-#Set.P#+(-30/2+8)*[Set.S])
 Type=Num|1|255
 Hidden=(1-#BackgroundMod#)
-[Value17]
+[Value19]
 Meter=String
-Text=#ColorOpacity#
+Text=#SolidOpacity#
 MeterStyle=Set.String:S | Set.Pacity:S
 Hidden=(1-#BackgroundMod#)
 [Blur:]
@@ -371,7 +415,7 @@ Meter=Shape
 2Act=[!WriteKeyValue Variables Blur "Blur" "#Sec.SaveLocation#"]
 MeterStyle=Set.Pick3:S
 Shape2=Rectangle (100*[Set.S]*([&Func:returnBool('Blur', 'Acrylic')]+[&Func:returnBool('Blur', 'Blur')]*2)),0,(300/3*[Set.S]),(30*[Set.S]),(7*[Set.S]) | Fill Color #Set.Text_Color# | StrokeWidth 0
-Y=([Option20:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option22:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
 [Blur:0]
 Meter=String
@@ -399,7 +443,7 @@ Meter=Shape
 2Act=[!WriteKeyValue Variables BlurCorner "Round" "#Sec.SaveLocation#"]
 MeterStyle=Set.Pick3:S
 Shape2=Rectangle (100*[Set.S]*([&Func:returnBool('BlurCorner', 'RoundSmall')]+[&Func:returnBool('BlurCorner', 'Round')]*2)),0,(300/3*[Set.S]),(30*[Set.S]),(7*[Set.S]) | Fill Color #Set.Text_Color# | StrokeWidth 0
-Y=([Option21:Y]-#Set.P#+(-30/2+8)*[Set.S])
+Y=([Option23:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
 [BlurCorner:0]
 Meter=String
@@ -426,8 +470,8 @@ MeterStyle=Set.Textbox:S
 Type=Int|0|255
 
 
-Y=([Option22:Y]-#Set.P#+(-30/2+8)*[Set.S])
-[Value22]
+Y=([Option24:Y]-#Set.P#+(-30/2+8)*[Set.S])
+[Value24]
 Meter=String
 Text=#Alpha#
 
@@ -436,37 +480,49 @@ MeterStyle=Set.String:S | Set.Value:S
 Meter=Shape
 MeterStyle=Set.Color:S
 LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
-Y=([Option23:Y]-#Set.P#+(-30/2+8)*[Set.S])
-
-[Border]
-Meter=Shape
-MeterStyle=Set.Color:S
-LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
-Y=([Option24:Y]-#Set.P#+(-30/2+8)*[Set.S])
-
-[FontColor]
-Meter=Shape
-MeterStyle=Set.Color:S
-LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
 Y=([Option25:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
-[DarkColor]
+[AccentNodeHover]
 Meter=Shape
 MeterStyle=Set.Color:S
 LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
 Y=([Option26:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
-[BoxBorder]
+[AccentNode]
 Meter=Shape
 MeterStyle=Set.Color:S
 LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
 Y=([Option27:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
-[BoxColor]
+[Border]
 Meter=Shape
 MeterStyle=Set.Color:S
 LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
 Y=([Option28:Y]-#Set.P#+(-30/2+8)*[Set.S])
+
+[FontColor]
+Meter=Shape
+MeterStyle=Set.Color:S
+LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
+Y=([Option29:Y]-#Set.P#+(-30/2+8)*[Set.S])
+
+[VolumePeakColor]
+Meter=Shape
+MeterStyle=Set.Color:S
+LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
+Y=([Option30:Y]-#Set.P#+(-30/2+8)*[Set.S])
+
+[BackVolColorOver]
+Meter=Shape
+MeterStyle=Set.Color:S
+LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
+Y=([Option31:Y]-#Set.P#+(-30/2+8)*[Set.S])
+
+[BackVolColorLeave]
+Meter=Shape
+MeterStyle=Set.Color:S
+LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=#CURRENTSECTION#" "FileName=#Sec.SaveLocation#" "RefreshConfig=#CURRENTCONFIG# | #Skin.Name#\Main"]
+Y=([Option32:Y]-#Set.P#+(-30/2+8)*[Set.S])
 
 
 
@@ -488,14 +544,17 @@ Y=([Option28:Y]-#Set.P#+(-30/2+8)*[Set.S])
 ;[Width of the name list on the left]
 ;Type=String
 ;Variable=LeftW
-;Limit=Num|100|#W#
-;[Additional padding between rows]
+;Limit=Num|22|#W#
+;[Padding between each slider rows]
 ;Type=String
-;Variable=additionalPadding
+;Variable=LinePad
 ;Limit=Num|0|100
 ;
 ;[Selections]
 ;Type=Header
+;[Show application names]
+;Type=Bool
+;Variable=DisplayName
 ;[Show application icons]
 ;Type=Bool
 ;Variable=FetchIcons
@@ -509,11 +568,15 @@ Y=([Option28:Y]-#Set.P#+(-30/2+8)*[Set.S])
 ;[Divider between sysVol and appVol]
 ;Type=Bool
 ;Variable=Stroke
-;[Orb image]
+;[Mixer icon in top left]
+;Type=Bool
+;Variable=MixerIcon
+;[Mixer icon]
 ;Type=Button
 ;Icon=e895
 ;String=#IconName#
 ;Act=[!CommandMEasure Func "interactionBox([[#SKINSPATH##Skin.Name#\Core\InteractionBox\MixerOrb.inc]], '#IconName#')"]
+;Hidden=!MixerIcon
 ;[Start text]
 ;Type=String
 ;Variable=StartText
@@ -563,6 +626,12 @@ Y=([Option28:Y]-#Set.P#+(-30/2+8)*[Set.S])
 ;[Accent color]
 ;Type=Color
 ;Variable=Accent
+;[Node hover color]
+;Type=Color
+;Variable=AccentNodeHover
+;[Node color]
+;Type=Color
+;Variable=AccentNode
 ;[Background color]
 ;Type=Color
 ;Variable=Color
@@ -572,12 +641,12 @@ Y=([Option28:Y]-#Set.P#+(-30/2+8)*[Set.S])
 ;[Font color]
 ;Type=Color
 ;Variable=FontColor
-;[Dark color]
+;[Volume peak color]
 ;Type=Color
-;Variable=DarkColor
-;[Box border color]
+;Variable=VolumePeakColor
+;[Volume sider hover color]
 ;Type=Color
-;Variable=BoxBorder
-;[Box color]
+;Variable=BackVolColorOver
+;[Volume sider color]
 ;Type=Color
-;Variable=BoxColor
+;Variable=BackVolColorLeave
