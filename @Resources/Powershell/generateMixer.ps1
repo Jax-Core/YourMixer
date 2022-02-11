@@ -51,7 +51,7 @@ Index=$i
 Substitute=#ReplaceApp#
 Group=UpdateWhenChange
 
-[AppVol$i]
+[AppVolPeak$i]
 Measure=Plugin
 Plugin=AppVolume
 Parent=AppVolumeParent
@@ -176,7 +176,7 @@ Index=$i
 Substitute=#ReplaceApp#
 Group=UpdateWhenChange
 
-[AppVol$i]
+[AppVolPeak$i]
 Measure=Plugin
 Plugin=AppVolume
 Parent=AppVolumeParent
