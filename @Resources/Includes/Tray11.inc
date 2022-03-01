@@ -23,4 +23,6 @@ IconName=#@#Icons\Volume0#IconTheme#.ico
 ToolTipText=Volume: [AppVolper0:]
 LeftMouseUpAction=[!UpdateMeasure mToggle]
 RightMouseUpAction=[!UpdateMeasureGroup CurPos.XY][!CommandMEasure Ctx.Gen:M "Gen()"][!ActivateConfig "#JaxCore\Ctx"][!SetVariable Sec.Skin "#ROOTCONFIG#" "#JaxCore\Ctx"]
+MouseScrollUpAction=[!CommandMeasure AppVolPer0 "ChangeVolume +#VolumeChangeLevel#"][!UpdateMeasure AppVolPer0][!UpdateMeasure MeasureTray]
+MouseScrollDownAction=[!CommandMeasure AppVolPer0 "ChangeVolume -#VolumeChangeLevel#"][!UpdateMeasure AppVolPer0][!UpdateMeasure MeasureTray]
 DynamicVariables=1
