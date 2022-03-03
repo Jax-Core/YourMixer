@@ -43,12 +43,21 @@
   </ol>
 </details>
 
+<p align="center">
+  <img alt="Latest by date" src="https://img.shields.io/github/v/tag/Jax-Core/YourMixer?label=Version&style=for-the-badge" />
+  <img alt="Releases" src="https://img.shields.io/github/downloads/Jax-Core/YourMixer/total?style=for-the-badge" />
+  <img alt="Release date" src="https://img.shields.io/github/release-date/Jax-Core/YourMixer?label=Last%20Update&style=for-the-badge" />
+  <img alt="Discord" src="https://img.shields.io/discord/880445067754610688?label=Discord%20server&style=for-the-badge" />
+  <img alt="Github" src="https://img.shields.io/github/license/Jax-Core/YourMixer?style=for-the-badge" />
+  
+  
+</p>
 
 ## About
 
 ![YourMixer](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/97bfd084-7ef0-496f-a835-3c41f482d38c/deze27o-1b26fbf1-119a-4017-b2af-b48a06b330d1.png)
 
-**YourMixer** is a Rainmeter skin that replaces the standard Windows Volume Mixer with a fully customizable volume controller. **YourMixer** includes 7 different color schemes as well as a multitude customization options for you to tweak and customize to your liking.
+**YourMixer** replaces the standard Windows Volume Mixer with a fully customizable volume controller. **YourMixer** includes 7 different color schemes as well as a multitude customization options for you to tweak and customize to your liking.
 
 ### Features
 
