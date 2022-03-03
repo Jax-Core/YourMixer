@@ -37,7 +37,7 @@ MeterStyle=DividerStyle
 
     # $pageH = ((80+(40+($RmAPI.Variable('LinePad')))*($rows+1-$SkipIndex.Count)+20+$additionalSize) * $scale)
     $pad = $RmAPI.Variable('LinePad')
-    $pageH = ((80 + (40 + $pad) * ($rows - $SkipIndex.Count) + 40 + $additionalSize) * $scale)
+    # $pageH = ((80 + (40 + $pad) * ($rows - $SkipIndex.Count) + 40 + $additionalSize) * $scale)
 
     if ($collapsetype -ne 2) {
         for (($i = 1); ($i -le $rows) ; $i++) {
@@ -114,10 +114,6 @@ Formula=Round(AppVol$i * 100)
 Group=UpdateWhenChange
 Substitute="-100":"Muted"
 
-[pVol$i]
-Meter=Image
-MeterStyle=ImageStyle | ImageStyle:#FetchIcons#
-
 "@
                 if ($AppHash[$AppArray[$i-1]].Count -gt 1) {
                     $occuranceArray = (0..($AppArray.Count-1)) | where {$AppArray[$_] -eq "$($AppArray[$i-1])"}
@@ -128,6 +124,11 @@ MeterStyle=ImageStyle | ImageStyle:#FetchIcons#
                         }
 
                     $fileContent += @"
+
+[pVol$i]
+Meter=Image
+MeterStyle=ImageStyle | ImageStyle:#FetchIcons#
+LeftMouseDownAction=$bang[!UpdateMeasureGroup UpdateWhenChange][!UpdateMeter *][!Redraw]
 
 [Vol$i]
 Meter=String
@@ -148,6 +149,10 @@ MeterStyle=ShapeStyle | ShapeStyle:Chameleon#Chameleon# | ShapeStyle:$($AppHash[
 
                 } else {
                     $fileContent += @"
+
+[pVol$i]
+Meter=Image
+MeterStyle=ImageStyle | ImageStyle:#FetchIcons#
 
 [Vol$i]
 Meter=String
@@ -199,5 +204,5 @@ Substitute="-100":"Muted"
 
     $fileContent | Out-File -FilePath $($RmAPI.VariableStr('ROOTCONFIGPATH') + 'Main\\Accessories\\Page\\Variants\\VolumeMixerCache.inc') -Encoding unicode
 
-    $RmAPI.Bang("[!WriteKeyValue Variables W $pageW `"$SaveLocation`"][!WriteKeyValue Variables H $pageH `"$SaveLocation`"][!Activateconfig `"YourMixer\Main\Accessories\Page`"]")
+    $RmAPI.Bang("[!Activateconfig `"YourMixer\Main\Accessories\Page`"]")
 }
