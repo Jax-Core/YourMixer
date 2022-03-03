@@ -230,7 +230,7 @@ Meter=String
 Text=#Scale#
 
 MeterStyle=Set.String:S | Set.Value:S
-[W]
+[Width]
 Meter=Shape
 MeterStyle=Set.Textbox:S
 Type=Num|100|#SCREENAREAWIDTH#
@@ -239,7 +239,7 @@ Type=Num|100|#SCREENAREAWIDTH#
 Y=([Option03:Y]-#Set.P#+(-30/2+8)*[Set.S])
 [Value03]
 Meter=String
-Text=#W#
+Text=#Width#
 
 MeterStyle=Set.String:S | Set.Value:S
 [MinH]
@@ -257,7 +257,7 @@ MeterStyle=Set.String:S | Set.Value:S
 [LeftW]
 Meter=Shape
 MeterStyle=Set.Textbox:S
-Type=Num|22|#W#
+Type=Num|22|#Width#
 
 
 Y=([Option05:Y]-#Set.P#+(-30/2+8)*[Set.S])
@@ -528,7 +528,7 @@ Y=([Option30:Y]-#Set.P#+(-30/2+8)*[Set.S])
 ;Limit=Num|0.5|2
 ;[Module Width]
 ;Type=String
-;Variable=W
+;Variable=Width
 ;Limit=Num|100|#SCREENAREAWIDTH#
 ;[Minium module height]
 ;Type=String
@@ -537,7 +537,7 @@ Y=([Option30:Y]-#Set.P#+(-30/2+8)*[Set.S])
 ;[Width of the name list on the left]
 ;Type=String
 ;Variable=LeftW
-;Limit=Num|22|#W#
+;Limit=Num|22|#Width#
 ;[Padding between each slider rows]
 ;Type=String
 ;Variable=LinePad
