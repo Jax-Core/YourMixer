@@ -55,7 +55,7 @@
 
 ## About
 
-![YourMixer](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/97bfd084-7ef0-496f-a835-3c41f482d38c/deze27o-1b26fbf1-119a-4017-b2af-b48a06b330d1.png)
+![YourMixer](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/97bfd084-7ef0-496f-a835-3c41f482d38c/deze27o-8e905bf8-c2ca-4921-8017-7ac4478f7570.png)
 
 **YourMixer** replaces the standard Windows Volume Mixer with a fully customizable volume controller. **YourMixer** includes 7 different color schemes as well as a multitude customization options for you to tweak and customize to your liking.
 
