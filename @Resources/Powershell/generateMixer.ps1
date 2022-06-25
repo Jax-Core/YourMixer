@@ -6,7 +6,7 @@ function generateMixer {
     $collapsetype = $RmAPI.VariableStr('CollapseIcons')
 
     $rows = $RmAPI.Measure('AppVolumeParent')
-    if ($collapsetype -ne 0) {
+    if ($collapsetype -notcontains 'Separate') {
         $AppArray = @()
         $SkipIndex = @()
 
@@ -19,7 +19,7 @@ function generateMixer {
             $AppArray += $appName
         }
 
-        if ($collapsetype -eq 2) {
+        if ($collapsetype -contains 'Combine') {
             $AppHash = $AppArray | Group-Object -AsHashTable -AsString
         }
     } 
@@ -29,7 +29,7 @@ function generateMixer {
 
 [Divider]
 Meter=Shape
-MeterStyle=DividerStyle
+MeterStyle=Divider:S
 
 "@
     $additionalSize = 40
@@ -39,7 +39,7 @@ MeterStyle=DividerStyle
     $pad = $RmAPI.Variable('LinePad')
     # $pageH = ((80 + (40 + $pad) * ($rows - $SkipIndex.Count) + 40 + $additionalSize) * $scale)
 
-    if ($collapsetype -ne 2) {
+    if ($collapsetype -contains 'Combine') {
         for (($i = 1); ($i -le $rows) ; $i++) {
             if ($i -notin $SkipIndex) {
                 $fileContent += @"
@@ -66,21 +66,25 @@ Formula=Round(AppVol$i * 100)
 Group=UpdateWhenChange
 Substitute="-100":"Muted"
 
+[Item$i.Background.Shape]
+Meter=Shape
+MeterStyle=Item.Background.Shape:S
+
 [pVol$i]
 Meter=Image
-MeterStyle=ImageStyle | ImageStyle:#FetchIcons#
+MeterStyle=Item.Image:S
 
 [Vol$i]
 Meter=String
-MeterStyle=RegularText | TextStyle | TextStyle:#FetchIcons# | TextStyle:DisplayName#Displayname#
+MeterStyle=String:S | Item.Name.String:S
 
 [$i]
 Meter=Shape
-MeterStyle=ShapeStyle | ShapeStyle:Chameleon#Chameleon#
+MeterStyle=Item.Shape:S
 
 [VolPer$i]
 Meter=String
-MeterStyle=RegularText | VolStyle
+MeterStyle=String:S | Item.Vol.String:S
 
 "@
             }
@@ -125,14 +129,18 @@ Substitute="-100":"Muted"
 
                     $fileContent += @"
 
+[Item$i.Background.Shape]
+Meter=Shape
+MeterStyle=Item.Background.Shape:S
+
 [pVol$i]
 Meter=Image
-MeterStyle=ImageStyle | ImageStyle:#FetchIcons#
+MeterStyle=Item.Image:S
 LeftMouseDownAction=$bang[!UpdateMeasureGroup UpdateWhenChange][!UpdateMeter *][!Redraw]
 
 [Vol$i]
 Meter=String
-MeterStyle=RegularText | TextStyle | TextStyle:#FetchIcons# | TextStyle:DisplayName#Displayname#
+MeterStyle=String:S | Item.Name.String:S
 LeftMouseDownAction=$bang[!UpdateMeasureGroup UpdateWhenChange][!UpdateMeter *][!Redraw]
 
 "@
@@ -141,8 +149,17 @@ LeftMouseDownAction=$bang[!UpdateMeasureGroup UpdateWhenChange][!UpdateMeter *][
 
 [$($occuranceArray[$j] + 1)]
 Meter=Shape
-X=(#LeftW# * #scale# + ((#W#-(#LeftW#+22+75)*#scale#)/ $($AppHash[$AppArray[$i-1]].Count) - 10 * ($($AppHash[$AppArray[$i-1]].Count) - 1) + 20)* $j)
-MeterStyle=ShapeStyle | ShapeStyle:Chameleon#Chameleon# | ShapeStyle:$($AppHash[$AppArray[$i-1]].Count)
+
+"@
+                        if ($j -eq 0) {
+                            $fileContent += @"
+X=[0:X]
+
+"@
+                        }
+
+                        $fileContent += @"
+MeterStyle=Item.Shape:S | Item.Shape:S.$($AppHash[$AppArray[$i-1]].Count)
 
 "@
                     }
@@ -150,17 +167,21 @@ MeterStyle=ShapeStyle | ShapeStyle:Chameleon#Chameleon# | ShapeStyle:$($AppHash[
                 } else {
                     $fileContent += @"
 
+[Item$i.Background.Shape]
+Meter=Shape
+MeterStyle=Item.Background.Shape:S
+
 [pVol$i]
 Meter=Image
-MeterStyle=ImageStyle | ImageStyle:#FetchIcons#
+MeterStyle=Item.Image:S
 
 [Vol$i]
 Meter=String
-MeterStyle=RegularText | TextStyle | TextStyle:#FetchIcons# | TextStyle:DisplayName#Displayname#
+MeterStyle=String:S | Item.Name.String:S
                 
 [$i]
 Meter=Shape
-MeterStyle=ShapeStyle | ShapeStyle:Chameleon#Chameleon#
+MeterStyle=Item.Shape:S
 
 "@
                 }
@@ -168,7 +189,7 @@ MeterStyle=ShapeStyle | ShapeStyle:Chameleon#Chameleon#
 
 [VolPer$i]
 Meter=String
-MeterStyle=RegularText | VolStyle
+MeterStyle=String:S | Item.Vol.String:S
 
 "@
             } else {
@@ -202,7 +223,7 @@ Substitute="-100":"Muted"
     
     }
 
-    $fileContent | Out-File -FilePath $($RmAPI.VariableStr('ROOTCONFIGPATH') + 'Main\\Accessories\\Page\\Variants\\VolumeMixerCache.inc') -Encoding unicode
+    $fileContent | Out-File -FilePath $($RmAPI.VariableStr('ROOTCONFIGPATH') + 'Main\\Accessories\\Page\\Cache\\MixerContent.inc') -Encoding unicode
 
     $RmAPI.Bang("[!Activateconfig `"YourMixer\Main\Accessories\Page`"]")
 }
