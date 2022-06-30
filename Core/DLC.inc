@@ -84,7 +84,7 @@ FontWEight=800
 MeterStyle=Set.String:S | SEc.String:S
 [Spotlight.Des.String]
 Meter=String
-Text=A flat-designed set of modules, inspired by multiple unix rices.
+Text=A flat-design volume mixer.
 X=r
 Y=R
 W=(#SEt.W#-#set.L#-#set.P#*2)
@@ -92,15 +92,15 @@ ClipString=2
 MeterStyle=Set.String:S | SEc.String:S
 [Spotlight.Price.String]
 Meter=String
-Text=Get it for $3+!#CRLF#
+Text=Get it for $0+ pay what you want!#CRLF#But a payment of $3 or more will go toward ongoing support and future updates :)
 X=r
 Y=(#Set.P#/2)R
 W=(#SEt.W#-#set.L#-#set.P#*2-400*[Set.S])
 ClipString=2
 FontWeight=300
-InlinePattern=\$3\+ 
+InlinePattern=\$0\+ pay what you want|\$3 or more
 InlineSetting=Color | #Set.Accent_Color_2#
-InlinePattern2=\$3\+ 
+InlinePattern2=\$0\+ pay what you want|\$3 or more
 InlineSetting2=Weight | 500
 MeterStyle=Set.String:S | SEc.String:S
 [Spotlight.Button1.Shape]
@@ -153,7 +153,7 @@ Fontcolor=2FB0CD
 MeterStyle=Set.String:S | Item.StringIcon:S
 [Item2.String]
 Meter=String
-Text=Get multiple ValliStart modules from 1 DLC!
+Text=Pay what you want, There is no set price (only a recommended price)!
 MeterStyle=Set.String:S | Item.String:S
 
 [Item3.Shape]

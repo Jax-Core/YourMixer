@@ -66,7 +66,7 @@ Formula=Round(AppVol$i * 100)
 Group=UpdateWhenChange
 Substitute="-100":"Muted"
 
-[Item$i.Background.Shape]
+[ppVol$i]
 Meter=Shape
 MeterStyle=Item.Background.Shape:S
 
@@ -129,7 +129,7 @@ Substitute="-100":"Muted"
 
                     $fileContent += @"
 
-[Item$i.Background.Shape]
+[ppVol$i]
 Meter=Shape
 MeterStyle=Item.Background.Shape:S
 
@@ -167,7 +167,7 @@ MeterStyle=Item.Shape:S | Item.Shape:S.$($AppHash[$AppArray[$i-1]].Count)
                 } else {
                     $fileContent += @"
 
-[Item$i.Background.Shape]
+[ppVol$i]
 Meter=Shape
 MeterStyle=Item.Background.Shape:S
 
