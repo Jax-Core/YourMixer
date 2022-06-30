@@ -1,6 +1,6 @@
 function generateMixer {
 
-    $SaveLocation = "$($RmAPI.VariableStr('ROOTCONFIGPATH'))Main\Accessories\Page\Main.ini"
+    $SaveLocation = "$($RmAPI.VariableStr('ROOTCONFIGPATH'))Main\Elements\ControlScreen\Main.ini"
     $scale = $RmAPI.VariableStr('scale')
     $pageW = $RmAPI.VariableStr('W')
     $collapsetype = $RmAPI.VariableStr('CollapseIcons')
@@ -35,8 +35,8 @@ MeterStyle=Divider:S
     $additionalSize = 40
     }
 
-    # $pageH = ((80+(40+($RmAPI.Variable('LinePad')))*($rows+1-$SkipIndex.Count)+20+$additionalSize) * $scale)
-    $pad = $RmAPI.Variable('LinePad')
+    # $pageH = ((80+(40+($RmAPI.Variable('line_pad')))*($rows+1-$SkipIndex.Count)+20+$additionalSize) * $scale)
+    $pad = $RmAPI.Variable('line_pad')
     # $pageH = ((80 + (40 + $pad) * ($rows - $SkipIndex.Count) + 40 + $additionalSize) * $scale)
 
     if ($collapsetype -contains 'Combine') {
@@ -223,7 +223,7 @@ Substitute="-100":"Muted"
     
     }
 
-    $fileContent | Out-File -FilePath $($RmAPI.VariableStr('ROOTCONFIGPATH') + 'Main\\Accessories\\Page\\Cache\\MixerContent.inc') -Encoding unicode
+    $fileContent | Out-File -FilePath $($RmAPI.VariableStr('ROOTCONFIGPATH') + 'Main\\Elements\\ControlScreen\\Cache\\MixerContent.inc') -Encoding unicode
 
-    $RmAPI.Bang("[!Activateconfig `"YourMixer\Main\Accessories\Page`"]")
+    $RmAPI.Bang("[!Activateconfig `"YourMixer\Main\Elements\ControlScreen`"]")
 }
