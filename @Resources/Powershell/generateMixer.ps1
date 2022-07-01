@@ -9,10 +9,10 @@ function generateMixer {
     if ($collapsetype -notcontains 'Separate') {
         $AppArray = @()
         $SkipIndex = @()
-
         for (($i = 1); $i -le $rows; $i++) {
             $RmAPI.Bang("[!SetOption AppVolTester Index $i][!UpdateMeasure AppVolTester]")
             $AppName = $RmAPI.MeasureStr('AppvolTester')
+            # $RmAPI.Log($AppName)
             if ($AppName -in $AppArray) {
                 $SkipIndex += $i
             } 
@@ -24,22 +24,22 @@ function generateMixer {
         }
     } 
 
-    if (($rows -gt 0) -and ($RmAPI.Variable('Stroke') -eq 1)) {
-        $fileContent += @"
+#     if (($rows -gt 0) -and ($RmAPI.Variable('Stroke') -eq 1)) {
+#         $fileContent += @"
 
-[Divider]
-Meter=Shape
-MeterStyle=Divider:S
+# [Divider]
+# Meter=Shape
+# MeterStyle=Divider:S
 
-"@
-    $additionalSize = 40
-    }
+# "@
+#     $additionalSize = 40
+#     }
 
     # $pageH = ((80+(40+($RmAPI.Variable('line_pad')))*($rows+1-$SkipIndex.Count)+20+$additionalSize) * $scale)
     $pad = $RmAPI.Variable('line_pad')
     # $pageH = ((80 + (40 + $pad) * ($rows - $SkipIndex.Count) + 40 + $additionalSize) * $scale)
 
-    if ($collapsetype -contains 'Combine') {
+    if ($collapsetype -notcontains 'Combine') {
         for (($i = 1); ($i -le $rows) ; $i++) {
             if ($i -notin $SkipIndex) {
                 $fileContent += @"
