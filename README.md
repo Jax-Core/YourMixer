@@ -86,29 +86,6 @@ After you've proceeded through the welcome screen, select this module and click 
 <br />
 <br />
 
-### Customization
-
-#### Choosing Color Schemes:
-
-Follow the steps outlined below to choose a custom color preset:
-
-1. Open Core and head over to the **Modules** section.
-2. Select **YourMixer** from the list and proceed to the **Color Scheme** tab and choose a preset that you like.
-3. The color scheme will be changed if you refresh **YourMixer** by deactivating and activating the toggle on the bottom left.
-
-> Note: The **Appearance** tab allows you to further customize each preset as required.
-
-#### Choosing Activation Alignment:
-
-Follow the steps outlined below to edit how **YourMixer** appears on your screen:
-
-1. Open Core and head over to the **Modules** section.
-2. Select **YourMixer** from the list and proceed to the **Position** tab.
-3. Under **Alignment** choose an alignment that you want.
-4. The activation alignment will be changed after you refresh **YourMixer** by deactivating and activating the toggle on the bottom left.
-
-> Note: You can also set custom padding by changing the `Screen padding size` value.
-
 <p align="right">
     <b><a href="#top">↥ back to top</a></b>
 </p>
