@@ -65,10 +65,6 @@
 * Apps Volume Control
 * Background Blur and many more...
 
-<p align="right">
-    <b><a href="#top">↥ back to top</a></b>
-</p>
-
 ## Getting Started
 
 ### Prerequisites
@@ -76,23 +72,19 @@
 - For older systems, **Powershell v5.1 or newer** is required. Upgrade powershell **[here](https://docs.microsoft.com/en-us/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7.2#upgrading-existing-windows-powershell)**!
 
 ### Installation 
-Run the following command in Powershell to get the latest version of JaxCore (`win + r` -> `powershell.exe` / search)
-```
+Run the following command in Powershell to get the latest version of JaxCore 
+(To launch Powershell as an Admin: `Win + R` -> `powershell` -> Press `CTRL + SHIFT + ENTER` on your keyboard. Powershell can also be launched via Windows Search.)
+
+```ps
 Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/Jax-Core/JaxCore/master/CoreInstaller.ps1" | Invoke-Expression
 ```
-Alternatively you can get it on the [website](https://jax-core.github.io/)
+> Alternatively, you can download it from the [website](https://jax-core.github.io/)
 
 After you've proceeded through the welcome screen, select this module and click Install. It will appear in the library page after that.
 <br />
 <br />
 
-<p align="right">
-    <b><a href="#top">↥ back to top</a></b>
-</p>
 
 ## Help
 - Join the [Core Community Discord Server](https://discord.gg/JmgehPSDD6) for more help.
 
-<p align="right">
-    <b><a href="#top">↥ back to top</a></b>
-</p>
