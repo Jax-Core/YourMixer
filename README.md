@@ -12,6 +12,7 @@
     <a href="https://discord.gg/JmgehPSDD6">Help, Report Bugs & Request Features »</a>
   </p>
 </div>
+
 <!-- END Header.mustache -->
 <!-- START ShieldsFull.mustache -->
 <p align="center">
@@ -27,6 +28,7 @@
 ## About
 
 ![YourMixer](https://raw.githubusercontent.com/Jax-Core/ReadME-Template/main/Resources/Splash/YourMixer.png)
+
 <!-- END About.mustache -->
 **YourMixer** replaces the standard Windows Volume Mixer with a fully customizable volume controller. **YourMixer** includes 7 different color schemes as well as a multitude customization options for you to tweak and customize to your liking.
 
@@ -51,14 +53,15 @@ Run the following command in Powershell to download the latest version of JaxCor
 (To launch Powershell as an Admin: `Win + R` -> `powershell` -> Press `CTRL + SHIFT + ENTER` on your keyboard. Powershell can also be launched via Windows Search.)
 
 ```
-Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/Jax-Core/JaxCore/master/CoreInstaller.ps1" | Invoke-Expression
+iwr -useb "https://raw.githubusercontent.com/Jax-Core/JaxCore/master/CoreInstaller.ps1" | iex
 ```
 
 > Alternatively you can download it from the [website](https://jax-core.github.io/)
 
 After you've proceeded through the welcome screen, select `YourMixer` (might have to scroll down) and click `Install`. It will appear in the library page after that.
 <br />
-<br /><!-- END GetStarted.mustache -->
+<br />
+<!-- END GetStarted.mustache -->
 <!-- START Setup.mustache -->
 
 ### Configuration
