@@ -33,6 +33,8 @@
 **YourMixer** replaces the standard Windows Volume Mixer with a fully customizable volume controller. **YourMixer** includes 7 different color schemes as well as a multitude customization options for you to tweak and customize to your liking.
 
 <!-- START Screenshots.mustache -->
+## Screenshots
+You can view screenshots [here](https://github.com/Jax-Core/YourMixer/blob/main/README.md)!
 <!-- END Screenshots.mustache -->
 
 <!-- START Features.mustache -->
@@ -64,6 +66,7 @@ iwr -useb "https://raw.githubusercontent.com/Jax-Core/JaxCore/master/CoreInstall
 After you've proceeded through the welcome screen, select `YourMixer` (might have to scroll down) and click `Install`. It will appear in the library page after that.
 <br />
 <br />
+
 <!-- END GetStarted.mustache -->
 <!-- START Setup.mustache -->
 
