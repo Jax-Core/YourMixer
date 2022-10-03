@@ -1,3 +1,3 @@
 [AppVolumeParent]
-IconsPath=#@#Images\AppIcons\
+IconsPath=#SKINSPATH#\YourMixer\@Resources\Images\AppIcons\
 IconSize=48
